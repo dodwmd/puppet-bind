@@ -370,6 +370,7 @@ class bind (
             ensure => link,
             target => '/var/lib/bind';
         }
+      }
       default: {}
     }
   }
