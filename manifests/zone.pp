@@ -143,7 +143,10 @@ define bind::zone(
 
   include bind
 
-  $zone_config_file = "db.${zone_name}.conf"
+  $zone_config_file = $::operatingsystem ? {
+    /(?i:Debian|Ubuntu|Mint)/ => 'zones/db.${zone_name}.conf',
+    default           => 'db.${zone_name}.conf',
+  }
 
   if $bool_absent == false {
 
