@@ -363,6 +363,15 @@ class bind (
       source  => $bind::manage_file_source,
       content => $bind::manage_file_content,
     }
+    case $::operatingsystem {
+      Ubuntu,Debian,Mint: {
+        file {
+          "$bind::config_dir/zones":
+            ensure => link,
+            target => '/var/lib/bind';
+        }
+      default: {}
+    }
   }
 
   # The whole bind configuration directory can be recursively overriden
