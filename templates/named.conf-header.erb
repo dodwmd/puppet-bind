@@ -5,4 +5,5 @@ options {
         auth-nxdomain no;
         listen-on-v6 { any; };
         recursion yes;
+        allow-notify { <%= ec2_public_ipv4 %>; };
 };
